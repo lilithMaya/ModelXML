@@ -1,0 +1,516 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="2.0">
+
+  <xs:attribute name="alignmentX" type="xs:string"/>
+  <xs:attribute name="alignmentY" type="xs:string"/>
+  <xs:attribute name="background" type="xs:string"/>
+  <xs:attribute name="border" type="xs:string"/>
+  <xs:attribute name="columns" type="xs:int"/>
+  <xs:attribute name="editable" type="xs:boolean"/>
+  <xs:attribute name="enabled" type="xs:boolean"/>
+  <xs:attribute name="floatable" type="xs:boolean"/>
+  <xs:attribute name="focusable" type="xs:boolean"/>
+  <xs:attribute name="font" type="xs:string"/>
+  <xs:attribute name="height" type="xs:int"/>
+	<xs:attribute name="horizontalScrollBarPolicy" type="xs:int"/>
+  <xs:attribute name="icon" type="xs:string"/>
+  <xs:attribute name="id" type="xs:string"/>
+  <xs:attribute name="inverted" type="xs:boolean"/>
+  <xs:attribute name="label" type="xs:string"/>
+  <xs:attribute name="layout" type="xs:string"/>
+  <xs:attribute name="majorTickSpacing" type="xs:int"/>
+  <xs:attribute name="maximum" type="xs:int"/>
+  <xs:attribute name="minimum" type="xs:int"/>
+  <xs:attribute name="minorTickSpacing" type="xs:int"/>
+  <xs:attribute name="modal" type="xs:boolean"/>
+  <xs:attribute name="name" type="xs:string"/>
+  <xs:attribute name="orientation" type="xs:string"/>
+  <xs:attribute name="paintLabels" type="xs:boolean"/>
+  <xs:attribute name="paintTicks" type="xs:boolean"/>
+  <xs:attribute name="popupVisible" type="xs:boolean"/>
+  <xs:attribute name="resizable" type="xs:boolean"/>
+  <xs:attribute name="rootVisible" type="xs:boolean"/>
+  <xs:attribute name="rows" type="xs:int"/>
+  <xs:attribute name="rowHeight" type="xs:int"/>
+  <xs:attribute name="selected" type="xs:boolean"/>
+  <xs:attribute name="selectedIndex" type="xs:int"/>
+  <xs:attribute name="selectionRow" type="xs:int"/>
+  <xs:attribute name="stringPainted" type="xs:boolean"/>
+  <xs:attribute name="text" type="xs:string"/>
+  <xs:attribute name="title" type="xs:string"/>
+  <xs:attribute name="toolTipText" type="xs:string"/>
+  <xs:attribute name="value" type="xs:int"/>
+	<xs:attribute name="verticalScrollBarPolicy" type="xs:int"/>
+  <xs:attribute name="visible" type="xs:boolean"/>
+	<xs:attribute name="wheelScrollingEnabled" type="xs:boolean"/>
+  <xs:attribute name="width" type="xs:int"/>
+
+
+  <xs:element name="button">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="border"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="icon"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="label"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="text"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="buttongroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="radiobutton" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute ref="id"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="checkbox">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="border"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="label"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="selected"/>
+      <xs:attribute ref="text"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="combobox">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="border"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="label"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="popupVisible"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="dialog">
+    <xs:complexType>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="modal"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="resizable"/>
+      <xs:attribute ref="title"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="frame">
+    <xs:complexType>
+	    <xs:sequence>
+        <xs:element ref="button" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="buttongroup" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="checkbox" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="combobox" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="label" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="menubar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="panel" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="progressbar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="radiobutton" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="scrollpane" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="slider" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="spinner" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="textarea" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="textfield" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="toolbar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="tree" minOccurs="0" maxOccurs="unbounded"/>
+	    </xs:sequence>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="layout"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="resizable"/>
+      <xs:attribute ref="title"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="label">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="text"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="menu">
+    <xs:complexType>
+      <xs:sequence>
+				<xs:element ref="menu" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="menuitem" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="label"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="text"/>
+      <xs:attribute ref="title"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="menubar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="menu" minOccurs="0" maxOccurs="unbounded"/>
+	    </xs:sequence>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="title"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="menuitem">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="label"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="text"/>
+      <xs:attribute ref="title"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="panel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="button" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="buttongroup" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="checkbox" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="combobox" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="label" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="progressbar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="radiobutton" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="scrollpane" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="slider" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="spinner" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="textarea" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="textfield" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="toolbar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="tree" minOccurs="0" maxOccurs="unbounded"/>
+	    </xs:sequence>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="layout"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="progressbar">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="maximum"/>
+      <xs:attribute ref="minimum"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="orientation"/>
+      <xs:attribute ref="stringPainted"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="value"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="radiobutton">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="border"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="label"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="selected"/>
+      <xs:attribute ref="text"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+	<xs:element name="scrollpane">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="button" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="buttongroup" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="checkbox" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="combobox" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="label" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="panel" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="progressbar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="radiobutton" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="slider" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="spinner" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="textarea" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="textfield" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="toolbar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="tree" minOccurs="0" maxOccurs="unbounded"/>
+	    </xs:sequence>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+			<xs:attribute ref="horizontalScrollBarPolicy"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="layout"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="toolTipText"/>
+			<xs:attribute ref="verticalScrollBarPolicy"/>
+      <xs:attribute ref="visible"/>
+			<xs:attribute ref="wheelScrollingEnabled"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="slider">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="inverted"/>
+      <xs:attribute ref="majorTickSpacing"/>
+      <xs:attribute ref="maximum"/>
+      <xs:attribute ref="minimum"/>
+      <xs:attribute ref="minorTickSpacing"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="orientation"/>
+      <xs:attribute ref="paintLabels"/>
+      <xs:attribute ref="paintTicks"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="value"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="spinner">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="value"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="table">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="columns"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="rows"/>
+      <xs:attribute ref="rowHeight"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="textarea">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="columns"/>
+      <xs:attribute ref="editable"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="rows"/>
+      <xs:attribute ref="text"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+	<xs:element name="textfield">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="columns"/>
+      <xs:attribute ref="editable"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="text"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="toolbar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="button" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="floatable"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="orientation"/>
+      <xs:attribute ref="title"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="tree">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="editable"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="rootVisible"/>
+      <xs:attribute ref="rowHeight"/>
+      <xs:attribute ref="selectionRow"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame title="hello world" visible="true" height="300" width="300">
+	<menubar>
+		<menu text="food">
+			<menu text="beef">
+				<menuitem text="OZ Beef"/>
+				<menuitem text="USA Beef"/>
+			</menu>
+			<menuitem text="pork"/>
+			<menu text="chicken">
+				<menuitem text="KFC"/>
+				<menuitem text="MAC"/>
+			</menu>
+		</menu>
+	</menubar>
+	<panel background="FFA500">
+	<buttongroup>
+		<radiobutton text="option1"/>
+		<radiobutton text="option2"/>
+		<radiobutton text="option3"/>
+	</buttongroup>
+	<label text="select an animal" />
+	<combobox toolTipText="this is a combo box" id="cb" />
+	<checkbox toolTipText="this is a check box" text="Do you like this animal?" selected="false"/>
+	<progressbar value="85" stringPainted="true"/>
+	<slider maximum="30" minimum="0" majorTickSpacing="10" minorTickSpacing="1" paintLabels="true" paintTicks="true"/>
+	<spinner toolTipText="this is a spinner" id="sp" />
+	<textarea rows="5" columns="20" />
+	<toolbar>
+    		<button text="button 1"/>
+		<button text="button 2"/>
+		<button text="button 3"/>
+	</toolbar>
+	</panel>	
+</frame>
