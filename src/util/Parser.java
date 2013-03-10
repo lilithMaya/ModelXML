@@ -1,5 +1,6 @@
 package util;
 
+import java.awt.Font;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -68,6 +69,9 @@ public class Parser {
 				case "Background":
 					setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
 							new Object[] {Integer.parseInt(value.toString(),16)}, new Class<?>[] {int.class}));
+					break;
+				case "Font":
+					setMethod.invoke(target,Font.decode((String) value));
 					break;
 				case "Icon":
 					setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],

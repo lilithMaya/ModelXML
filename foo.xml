@@ -27,7 +27,7 @@
 	<spinner toolTipText="this is a spinner" id="sp" />
 	<textarea rows="5" columns="20" />
 	<toolbar>
-    		<button text="button 1"/>
+    		<button text="button 1" font="Arial-BOLD-18"/>
 		<button text="button 2"/>
 		<button text="button 3"/>
 	</toolbar>
