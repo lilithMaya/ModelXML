@@ -18,6 +18,7 @@
   <xs:attribute name="inverted" type="xs:boolean"/>
   <xs:attribute name="label" type="xs:string"/>
   <xs:attribute name="layout" type="xs:string"/>
+	<xs:attribute name="location" type="xs:string"/>
   <xs:attribute name="majorTickSpacing" type="xs:int"/>
   <xs:attribute name="maximum" type="xs:int"/>
   <xs:attribute name="minimum" type="xs:int"/>
@@ -59,6 +60,7 @@
       <xs:attribute ref="icon"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="visible"/>
@@ -87,6 +89,7 @@
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="selected"/>
       <xs:attribute ref="text"/>
@@ -107,6 +110,7 @@
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="popupVisible"/>
       <xs:attribute ref="toolTipText"/>
@@ -122,6 +126,7 @@
       <xs:attribute ref="font"/>
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="modal"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="resizable"/>
@@ -149,6 +154,7 @@
         <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="textarea" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="textfield" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="textpane" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="toolbar" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="tree" minOccurs="0" maxOccurs="unbounded"/>
 	    </xs:sequence>
@@ -158,6 +164,7 @@
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="layout"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="resizable"/>
       <xs:attribute ref="title"/>
@@ -176,6 +183,7 @@
       <xs:attribute ref="font"/>
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="toolTipText"/>
@@ -200,6 +208,7 @@
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="title"/>
@@ -222,6 +231,7 @@
       <xs:attribute ref="font"/>
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="title"/>
       <xs:attribute ref="toolTipText"/>
@@ -241,6 +251,7 @@
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="title"/>
@@ -266,6 +277,7 @@
         <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="textarea" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="textfield" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="textpane" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="toolbar" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="tree" minOccurs="0" maxOccurs="unbounded"/>
 	    </xs:sequence>
@@ -278,6 +290,7 @@
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="layout"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
@@ -295,6 +308,7 @@
       <xs:attribute ref="font"/>
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="maximum"/>
       <xs:attribute ref="minimum"/>
       <xs:attribute ref="name"/>
@@ -319,6 +333,7 @@
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="selected"/>
       <xs:attribute ref="text"/>
@@ -343,6 +358,7 @@
         <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="textarea" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="textfield" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="textpane" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="toolbar" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="tree" minOccurs="0" maxOccurs="unbounded"/>
 	    </xs:sequence>
@@ -356,6 +372,7 @@
 			<xs:attribute ref="horizontalScrollBarPolicy"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="layout"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="toolTipText"/>
 			<xs:attribute ref="verticalScrollBarPolicy"/>
@@ -376,6 +393,7 @@
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="inverted"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="majorTickSpacing"/>
       <xs:attribute ref="maximum"/>
       <xs:attribute ref="minimum"/>
@@ -401,9 +419,60 @@
       <xs:attribute ref="font"/>
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="value"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+	<xs:element name="tab">
+    <xs:complexType>
+			<xs:sequence>
+        <xs:element ref="button" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="buttongroup" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="checkbox" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="combobox" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="label" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="menubar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="panel" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="progressbar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="radiobutton" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="scrollpane" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="slider" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="spinner" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="textarea" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="textfield" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="textpane" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="toolbar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="tree" minOccurs="0" maxOccurs="unbounded"/>
+	    </xs:sequence>
+			<xs:attribute ref="icon"/>
+			<xs:attribute ref="title"/>
+      <xs:attribute ref="toolTipText"/>
+    </xs:complexType>
+  </xs:element>
+
+	<xs:element name="tabbedpane">
+    <xs:complexType>
+			<xs:sequence>
+        <xs:element ref="tab" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+      <xs:attribute ref="layout"/>
+			<xs:attribute ref="location"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
       <xs:attribute ref="width"/>
     </xs:complexType>
@@ -420,6 +489,7 @@
       <xs:attribute ref="font"/>
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="rows"/>
       <xs:attribute ref="rowHeight"/>
@@ -441,6 +511,7 @@
       <xs:attribute ref="font"/>
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="rows"/>
       <xs:attribute ref="text"/>
@@ -462,6 +533,27 @@
       <xs:attribute ref="font"/>
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
+      <xs:attribute ref="name"/>
+      <xs:attribute ref="text"/>
+      <xs:attribute ref="toolTipText"/>
+      <xs:attribute ref="visible"/>
+      <xs:attribute ref="width"/>
+    </xs:complexType>
+  </xs:element>
+
+	<xs:element name="textpane">
+    <xs:complexType>
+      <xs:attribute ref="alignmentX"/>
+      <xs:attribute ref="alignmentY"/>
+      <xs:attribute ref="background"/>
+      <xs:attribute ref="editable"/>
+      <xs:attribute ref="enabled"/>
+      <xs:attribute ref="focusable"/>
+      <xs:attribute ref="font"/>
+      <xs:attribute ref="height"/>
+      <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="toolTipText"/>
@@ -484,6 +576,7 @@
       <xs:attribute ref="font"/>
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="orientation"/>
       <xs:attribute ref="title"/>
@@ -504,6 +597,7 @@
       <xs:attribute ref="font"/>
       <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
+			<xs:attribute ref="location"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="rootVisible"/>
       <xs:attribute ref="rowHeight"/>

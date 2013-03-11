@@ -22,6 +22,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import tags.Tab;
+
 public class Parser {
 	
 	private Document doc;
@@ -73,10 +75,6 @@ public class Parser {
 				case "Font":
 					setMethod.invoke(target,Font.decode((String) value));
 					break;
-				case "Icon":
-					setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
-							new Object[] {value}, new Class<?>[] {String.class}));
-					break;
 				case "Height":
 					if(this.tempData.containsKey("width"))
 						setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
@@ -84,6 +82,20 @@ public class Parser {
 							Integer.parseInt(value.toString())}, new Class<?>[] {int.class, int.class}));
 					else
 						this.tempData.put("height", value);
+					break;
+				case "Icon":
+					setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
+							new Object[] {value}, new Class<?>[] {String.class}));
+					break;
+				case "Location":
+					String [] data = ((String) value).split(",");
+					setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
+							new Object[] {Integer.parseInt(data[0].trim()),Integer.parseInt(data[1].trim())}, 
+							new Class<?>[] {int.class, int.class}));
+					break;
+				case "Layout":
+					String className = "java.awt." + value;
+					setMethod.invoke(target, Class.forName(className).newInstance());
 					break;
 				case "Width":
 					if(this.tempData.containsKey("height"))
@@ -93,10 +105,6 @@ public class Parser {
 							new Class<?>[] {int.class, int.class}));
 					else
 						this.tempData.put("width", value);
-					break;
-				case "Layout":
-					String className = "java.awt." + value;
-					setMethod.invoke(target, Class.forName(className).newInstance());
 					break;
 				default:
 					setMethod.invoke(target, Converter.convert(setMethod.getParameterTypes()[0], value));
@@ -120,6 +128,9 @@ public class Parser {
 				addMethod = parent.getClass().getMethod("setJMenuBar", child.getClass());
 			else if(parent.getClass().getName().equals("javax.swing.JScrollPane"))
 				addMethod = parent.getClass().getMethod("setViewportView",java.awt.Component.class);
+			else if(parent.getClass().getName().equals("javax.swing.JTabbedPane"))
+				addMethod = parent.getClass().getMethod("addTab",String.class, javax.swing.Icon.class, 
+						java.awt.Component.class, String.class);
 			else if(parent.getClass().getName().equals("javax.swing.ButtonGroup"))
 			{
 				addMethod = parent.getClass().getMethod("add",javax.swing.AbstractButton.class);
@@ -129,12 +140,19 @@ public class Parser {
 				addMethod = parent.getClass().getMethod("add",java.awt.Component.class);
 			
 			//invoke add method
-			if(!child.getClass().getName().equals("javax.swing.ButtonGroup"))
-				addMethod.invoke(parent, child);
-			else
+			if(child.getClass().getName().equals("javax.swing.ButtonGroup"))
 			{
 				while(!this.buttongroup.isEmpty())
 					addMethod.invoke(parent, buttongroup.remove(0));
+			}
+			else if(child.getClass().getName().equals("tags.Tab"))
+			{
+				Tab tab = (Tab) child;
+				addMethod.invoke(parent, tab.getTitle(), tab.getIcon(), tab.getComponent(), tab.getToolTipText());
+			}
+			else
+			{
+				addMethod.invoke(parent, child);
 			}
 			
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException |

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<frame title="hello world" visible="true" height="300" width="300">
+<frame title="hello world" visible="true" height="400" width="400" location="200, 200">
 	<menubar>
 		<menu text="food">
 			<menu text="beef">
@@ -13,6 +13,8 @@
 			</menu>
 		</menu>
 	</menubar>
+	<tabbedpane>
+	<tab title="tab1" toolTipText="test">
 	<panel background="FFA500">
 	<buttongroup>
 		<radiobutton text="option1"/>
@@ -31,5 +33,13 @@
 		<button text="button 2"/>
 		<button text="button 3"/>
 	</toolbar>
-	</panel>	
+	<list id="l" />
+	</panel>
+	</tab>
+	<tab title="tab2" toolTipText="test">
+	<textpane background="FFA500" text="xiang">
+	
+	</textpane>
+	</tab>
+	</tabbedpane>	
 </frame>

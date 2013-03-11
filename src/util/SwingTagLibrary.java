@@ -11,6 +11,7 @@ public class SwingTagLibrary extends TagLibrary{
 		this.insertTag("dialog", "javax.swing.JDialog");
 		this.insertTag("frame", "javax.swing.JFrame");
 		this.insertTag("label", "javax.swing.JLabel");
+		this.insertTag("list", "javax.swing.JList");
 		this.insertTag("menu", "javax.swing.JMenu");
 		this.insertTag("menubar", "javax.swing.JMenuBar");
 		this.insertTag("menuitem", "javax.swing.JMenuItem");
@@ -20,9 +21,12 @@ public class SwingTagLibrary extends TagLibrary{
 		this.insertTag("scrollpane", "javax.swing.JScrollPane");
 		this.insertTag("slider", "javax.swing.JSlider");
 		this.insertTag("spinner", "javax.swing.JSpinner");
+		this.insertTag("tab", "tags.Tab");
+		this.insertTag("tabbedpane", "javax.swing.JTabbedPane");
 		this.insertTag("table", "javax.swing.JTable");
 		this.insertTag("textarea", "javax.swing.JTextArea");
 		this.insertTag("textfield", "javax.swing.JTextField");
+		this.insertTag("textpane", "javax.swing.JTextPane");
 		this.insertTag("toolbar", "javax.swing.JToolBar");
 		this.insertTag("tree", "javax.swing.JTree");
 	}
