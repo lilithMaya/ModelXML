@@ -1,5 +1,3 @@
 ModelXML
 ========
 
-Author:
-lilithMaya == haoqi
