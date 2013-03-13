@@ -9,7 +9,7 @@ public class test {
 	public static void main(String[] args)
 	{
 		Engine e = new Engine();
-		e.setLayout("foo.xml");
+		e.setLayout(test.class.getResourceAsStream("foo.xml"));
 //		Parser p = new Parser();
 //		p.parse("foo.xml");
 		e.render();
@@ -34,5 +34,14 @@ public class test {
 		
 		JList<String> list = (JList<String>) e.findViewById("l");
 		list.setListData(new String[] {"hot", "cold"});
+		
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		e.killLayout();
 	}
 }

@@ -1,3 +1,4 @@
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -16,7 +17,7 @@ public class Engine {
 		parser = new Parser();
 	}
 	
-	public void setLayout(String inputStream) {
+	public void setLayout(InputStream inputStream) {
 		this.layout = this.parser.parse(inputStream);
 		this.objects = this.parser.getObjects();	
 	}
@@ -36,5 +37,17 @@ public class Engine {
 	public Object findViewById(String id)
 	{
 		return this.objects.get(id);
+	}
+	
+	public void killLayout()
+	{
+		try 
+		{
+			Method setMethod = this.layout.getClass().getMethod("dispose", new Class<?>[] {});
+			setMethod.invoke(this.layout, new Object[] {});
+		} catch (NoSuchMethodException | IllegalAccessException 
+				| IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
 	}
 }

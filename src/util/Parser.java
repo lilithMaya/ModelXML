@@ -1,8 +1,8 @@
 package util;
 
 import java.awt.Font;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -163,12 +163,12 @@ public class Parser {
 		return parent;
 	}
 	
-	private void read(String inputStream) {
+	private void read(InputStream inputStream) {
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder;
 			dBuilder = dbFactory.newDocumentBuilder();
-			this.doc = dBuilder.parse(new FileInputStream(inputStream));
+			this.doc = dBuilder.parse(inputStream);
 		} catch (ParserConfigurationException | IOException | SAXException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -180,7 +180,7 @@ public class Parser {
 		
 	}
 		
-	public Object parse(String inputStream) {
+	public Object parse(InputStream inputStream) {
 		Object targetObject = null;
 		try
 		{
