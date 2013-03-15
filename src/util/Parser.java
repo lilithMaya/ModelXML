@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
  
+import javax.swing.JTable;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,6 +23,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import tags.Column;
 import tags.Tab;
 
 public class Parser {
@@ -122,22 +124,36 @@ public class Parser {
 	{
 		try {
 			Method addMethod = null;
-			
+					
 			//get appropriate add method
 			if(child.getClass().getName().equals("javax.swing.JMenuBar"))
+			{
 				addMethod = parent.getClass().getMethod("setJMenuBar", child.getClass());
+			}
 			else if(parent.getClass().getName().equals("javax.swing.JScrollPane"))
+			{
 				addMethod = parent.getClass().getMethod("setViewportView",java.awt.Component.class);
+			}
 			else if(parent.getClass().getName().equals("javax.swing.JTabbedPane"))
+			{
 				addMethod = parent.getClass().getMethod("addTab",String.class, javax.swing.Icon.class, 
 						java.awt.Component.class, String.class);
+			}
+			else if(parent.getClass().getName().equals("javax.swing.JTable"))
+			{
+				addMethod = ((JTable) parent).getModel().getClass().getMethod("addColumn", Object.class);
+				//addMethod = ((JTable) parent).getTableHeader().getColumnModel().getClass().
+						//getMethod("addColumn", ((Column) child).getColumn().getClass());
+			}
 			else if(parent.getClass().getName().equals("javax.swing.ButtonGroup"))
 			{
 				addMethod = parent.getClass().getMethod("add",javax.swing.AbstractButton.class);
 				this.buttongroup.add(child);
 			}
 			else
+			{
 				addMethod = parent.getClass().getMethod("add",java.awt.Component.class);
+			}
 			
 			//invoke add method
 			if(child.getClass().getName().equals("javax.swing.ButtonGroup"))
@@ -149,6 +165,11 @@ public class Parser {
 			{
 				Tab tab = (Tab) child;
 				addMethod.invoke(parent, tab.getTitle(), tab.getIcon(), tab.getComponent(), tab.getToolTipText());
+			}
+			else if(child.getClass().getName().equals("tags.Column"))
+			{
+				addMethod.invoke(((JTable) parent).getModel(), ((Column) child).getName());
+				//addMethod.invoke(((JTable) parent).getTableHeader().getColumnModel(), ((Column) child).getColumn());
 			}
 			else
 			{
@@ -261,5 +282,5 @@ public class Parser {
 	{
 		return this.objects;
 	}
-	
+		
 }

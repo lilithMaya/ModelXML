@@ -41,5 +41,14 @@
 	
 	</textpane>
 	</tab>
+	<tab title="tab3" toolTipText="table test">
+	<panel background="FFA500">
+	<table id="tb">
+		<th columnWidth="50" name="foo1" />
+		<th columnWidth="60" name="foo2" />
+		<th columnWidth="70" name="foo3" />
+	</table>
+	</panel>
+	</tab>
 	</tabbedpane>	
 </frame>

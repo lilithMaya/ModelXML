@@ -27,6 +27,7 @@ public class SwingTagLibrary extends TagLibrary{
 		this.insertTag("textarea", "javax.swing.JTextArea");
 		this.insertTag("textfield", "javax.swing.JTextField");
 		this.insertTag("textpane", "javax.swing.JTextPane");
+		this.insertTag("th", "tags.Column");
 		this.insertTag("toolbar", "javax.swing.JToolBar");
 		this.insertTag("tree", "javax.swing.JTree");
 	}
