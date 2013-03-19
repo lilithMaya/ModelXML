@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame title="hello world" visible="true" size="400, 400" location="200, 200">
+	<menubar>
+		<menu text="File"/>
+		<menu text="About"/>
+	</menubar>
+	<panel layout="BorderLayout">
+	<panel background="FF0000" preferredSize="200, 150" constraint="BorderLayout.WEST">
+	</panel>
+	<panel background="00FF00" preferredSize="200, 250" constraint="BorderLayout.CENTER">
+	</panel>
+	</panel>
+</frame>

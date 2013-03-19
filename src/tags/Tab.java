@@ -34,5 +34,9 @@ public class Tab {
 	public void add(Component component) {
 		this.component = component;
 	}
+	
+	public void add(Component component, Object constraint) {
+		this.component = component;
+	}
 
 }

@@ -29,10 +29,10 @@ import tags.Tab;
 public class Parser {
 	
 	private Document doc;
-	private Map<String, Object> tempData = new HashMap<String, Object>();
 	private Stack<ObjectState> ancestors = new Stack<ObjectState>();
 	private Map<String, Object> objects = new HashMap<String, Object>();
 	private List<Object> buttongroup = new ArrayList<Object>();
+	private Stack<Object> constraints = new Stack<Object>();
 			
 	private Method findSetMethod(Object target, String field)
 	{
@@ -40,13 +40,7 @@ public class Parser {
 		Method targetGetMethod = null;
 		try
 		{
-			if(field.equals("Height") || field.equals("Width"))
-			{
-				targetGetMethod = target.getClass().getMethod("getSize",new Class<?>[] {});
-				field = "Size";
-			}
-			else
-				targetGetMethod = target.getClass().getMethod("get" + field,new Class<?>[] {});
+			targetGetMethod = target.getClass().getMethod("get" + field,new Class<?>[] {});
 			Class<?> returnType = targetGetMethod.getReturnType();
 			setMethod = target.getClass().getMethod("set" + field, returnType);
 		} catch (NoSuchMethodException e) {
@@ -77,19 +71,11 @@ public class Parser {
 				case "Font":
 					setMethod.invoke(target,Font.decode((String) value));
 					break;
-				case "Height":
-					if(this.tempData.containsKey("width"))
-						setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
-							new Object[] {Integer.parseInt(this.tempData.get("width").toString()), 
-							Integer.parseInt(value.toString())}, new Class<?>[] {int.class, int.class}));
-					else
-						this.tempData.put("height", value);
-					break;
 				case "Icon":
 					setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
 							new Object[] {value}, new Class<?>[] {String.class}));
 					break;
-				case "Location":
+				case "Location":case "Size":case "PreferredSize":
 					String [] data = ((String) value).split(",");
 					setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
 							new Object[] {Integer.parseInt(data[0].trim()),Integer.parseInt(data[1].trim())}, 
@@ -98,15 +84,6 @@ public class Parser {
 				case "Layout":
 					String className = "java.awt." + value;
 					setMethod.invoke(target, Class.forName(className).newInstance());
-					break;
-				case "Width":
-					if(this.tempData.containsKey("height"))
-						setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
-								new Object[] {Integer.parseInt(value.toString()), 
-							Integer.parseInt(this.tempData.get("height").toString())}, 
-							new Class<?>[] {int.class, int.class}));
-					else
-						this.tempData.put("width", value);
 					break;
 				default:
 					setMethod.invoke(target, Converter.convert(setMethod.getParameterTypes()[0], value));
@@ -120,7 +97,7 @@ public class Parser {
 		return target;
 	}
 	
-	private Object invokeAddMethod(Object parent, Object child) 
+	private Object invokeAddMethod(Object parent, Object child, Object constraint) 
 	{
 		try {
 			Method addMethod = null;
@@ -152,14 +129,14 @@ public class Parser {
 			}
 			else
 			{
-				addMethod = parent.getClass().getMethod("add",java.awt.Component.class);
+				addMethod = parent.getClass().getMethod("add",java.awt.Component.class, Object.class);
 			}
 			
 			//invoke add method
 			if(child.getClass().getName().equals("javax.swing.ButtonGroup"))
 			{
 				while(!this.buttongroup.isEmpty())
-					addMethod.invoke(parent, buttongroup.remove(0));
+					addMethod.invoke(parent, buttongroup.remove(0), null);
 			}
 			else if(child.getClass().getName().equals("tags.Tab"))
 			{
@@ -173,7 +150,10 @@ public class Parser {
 			}
 			else
 			{
-				addMethod.invoke(parent, child);
+				if(addMethod.getParameterTypes().length == 1)
+					addMethod.invoke(parent, child);
+				else
+					addMethod.invoke(parent, child, LayoutConverter.convert(parent, constraint));
 			}
 			
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException |
@@ -217,6 +197,7 @@ public class Parser {
 				//initialize attributes
 				if(index == 0)
 				{
+					Object constraint = null;
 					targetObject = libraries.getLibrary(currentNode.getNodeName()).newInstance();
 					id = null;
 					NamedNodeMap attributes = currentNode.getAttributes();
@@ -228,6 +209,8 @@ public class Parser {
 						String value = attr.getNodeValue();
 						if(field.equals("Id"))
 							id = value;
+						else if(field.equals("Constraint"))
+							constraint = value;
 						else
 						{
 							Method setMethod = this.findSetMethod(targetObject, field);
@@ -235,6 +218,7 @@ public class Parser {
 								this.invokeSetMethod(targetObject, setMethod, value, field);
 						}
 					}
+					this.constraints.push(constraint);
 				}
 				
 				//initialize child elements
@@ -259,7 +243,7 @@ public class Parser {
 					{
 						ObjectState ancestor = this.ancestors.pop();
 						Object parent = ancestor.getTargetObject();
-						targetObject = this.invokeAddMethod(parent, targetObject);
+						targetObject = this.invokeAddMethod(parent, targetObject, this.constraints.pop());
 						currentNode = (Element) ancestor.getObject();
 						index = ancestor.getCurrentIndex();
 						id = ancestor.getId();
