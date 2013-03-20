@@ -9,6 +9,8 @@ public class LayoutConverter {
 	
 	public static Object convert(Object parent, Object constraint)
 	{
+		if(constraint == null)
+			return null;
 		Object result = null;
 		try {
 			Method getLayout = parent.getClass().getMethod("getLayout", new Class<?>[] {});
@@ -23,7 +25,7 @@ public class LayoutConverter {
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException 
 				| IllegalArgumentException | InvocationTargetException e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		return result;
 	}
@@ -48,5 +50,25 @@ public class LayoutConverter {
 	    	}
 	    }
 	    return null;
+	}
+	
+	public static Object createLayout(Object parent, String value)
+	{
+		if(value.equals("hbox"))
+			return new javax.swing.BoxLayout((java.awt.Container) parent, javax.swing.BoxLayout.X_AXIS);
+		else if(value.equals("vbox"))
+			return new javax.swing.BoxLayout((java.awt.Container) parent, javax.swing.BoxLayout.Y_AXIS);
+		else
+		{
+			String className = "java.awt." + value;
+			try {
+				return Class.forName(className).newInstance();
+			} catch (InstantiationException | IllegalAccessException
+					| ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 }

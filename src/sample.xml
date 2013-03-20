@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<frame title="hello world" visible="true" size="400, 400" location="200, 200">
+<frame title="Code Manager" visible="true" size="1280, 720" location="200, 200">
 	<menubar>
 		<menu text="File"/>
-		<menu text="About"/>
+		<menu text="Search">
+			<menuitem text="Search"/>
+		</menu>
+		<menu text="Help">
+			<menuitem text="About"/>
+		</menu>
 	</menubar>
 	<panel layout="BorderLayout">
-	<panel background="FF0000" preferredSize="200, 150" constraint="BorderLayout.WEST">
-	</panel>
-	<panel background="00FF00" preferredSize="200, 250" constraint="BorderLayout.CENTER">
-	</panel>
+		<panel preferredSize="300, 600" constraint="BorderLayout.WEST" layout="vbox">
+			<combobox id="type" maximumSize="300, 50"/>
+			<scrollpane>
+				<list id="l" />
+			</scrollpane>
+		</panel>
+		<panel preferredSize="700, 600" constraint="BorderLayout.CENTER" layout="vbox">
+			<label text="Files" alignmentX="0.0"/>
+			<scrollpane>
+				<table id="tb">
+					<th name="Name" />
+					<th name="Path" />
+					<th name="Date Modified" />
+				</table>
+			</scrollpane>
+		</panel>
 	</panel>
 </frame>

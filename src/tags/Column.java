@@ -1,30 +1,28 @@
 package tags;
 
-import javax.swing.table.TableColumn;
+import javax.swing.table.DefaultTableModel;
 
 public class Column {
 	
-	private TableColumn column = new TableColumn();
+	private static DefaultTableModel model = new DefaultTableModel();
+	private static int index = -1;
 	private String name;
-	private int columnWidth;
 	
-	public TableColumn getColumn() {
-		return column;
+	public Column() {
+		index++;
 	}
 	
+	public DefaultTableModel getModel() {
+		return model;
+	}
+		
 	public void setName(String name) {
-		this.column.setHeaderValue(name);
+		if(model.getColumnCount() != index + 1)
+			model.addColumn(name);
 	}
 	
-	public void setColumnWidth(int width) {
-		this.column.setPreferredWidth(width);
-	}
-
 	public String getName() {
 		return name;
 	}
 
-	public int getColumnWidth() {
-		return columnWidth;
-	}
 }

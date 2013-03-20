@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
  
-import javax.swing.JTable;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -75,23 +74,21 @@ public class Parser {
 					setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
 							new Object[] {value}, new Class<?>[] {String.class}));
 					break;
-				case "Location":case "Size":case "PreferredSize":
+				case "Location":case "Size":case "PreferredSize":case "MaximumSize":case "MinimumSize":
 					String [] data = ((String) value).split(",");
 					setMethod.invoke(target,Converter.convert(setMethod.getParameterTypes()[0],
 							new Object[] {Integer.parseInt(data[0].trim()),Integer.parseInt(data[1].trim())}, 
 							new Class<?>[] {int.class, int.class}));
 					break;
 				case "Layout":
-					String className = "java.awt." + value;
-					setMethod.invoke(target, Class.forName(className).newInstance());
+					setMethod.invoke(target, LayoutConverter.createLayout(target, (String) value));
 					break;
 				default:
 					setMethod.invoke(target, Converter.convert(setMethod.getParameterTypes()[0], value));
 					break;				
 			}
 			
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException 
-				| InstantiationException | ClassNotFoundException e) {
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 		return target;
@@ -118,9 +115,7 @@ public class Parser {
 			}
 			else if(parent.getClass().getName().equals("javax.swing.JTable"))
 			{
-				addMethod = ((JTable) parent).getModel().getClass().getMethod("addColumn", Object.class);
-				//addMethod = ((JTable) parent).getTableHeader().getColumnModel().getClass().
-						//getMethod("addColumn", ((Column) child).getColumn().getClass());
+				addMethod = parent.getClass().getMethod("setModel", javax.swing.table.TableModel.class);
 			}
 			else if(parent.getClass().getName().equals("javax.swing.ButtonGroup"))
 			{
@@ -129,14 +124,22 @@ public class Parser {
 			}
 			else
 			{
-				addMethod = parent.getClass().getMethod("add",java.awt.Component.class, Object.class);
+				if(constraint != null)
+					addMethod = parent.getClass().getMethod("add",java.awt.Component.class, Object.class);
+				else
+					addMethod = parent.getClass().getMethod("add",java.awt.Component.class);
 			}
 			
 			//invoke add method
 			if(child.getClass().getName().equals("javax.swing.ButtonGroup"))
 			{
 				while(!this.buttongroup.isEmpty())
-					addMethod.invoke(parent, buttongroup.remove(0), null);
+				{
+					if(constraint != null)
+						addMethod.invoke(parent, buttongroup.remove(0), constraint);
+					else
+						addMethod.invoke(parent, buttongroup.remove(0));
+				}
 			}
 			else if(child.getClass().getName().equals("tags.Tab"))
 			{
@@ -145,8 +148,7 @@ public class Parser {
 			}
 			else if(child.getClass().getName().equals("tags.Column"))
 			{
-				addMethod.invoke(((JTable) parent).getModel(), ((Column) child).getName());
-				//addMethod.invoke(((JTable) parent).getTableHeader().getColumnModel(), ((Column) child).getColumn());
+				addMethod.invoke(parent, ((Column) child).getModel());
 			}
 			else
 			{
