@@ -6,12 +6,12 @@
   <xs:attribute name="background" type="xs:string"/>
   <xs:attribute name="border" type="xs:string"/>
   <xs:attribute name="columns" type="xs:int"/>
+	<xs:attribute name="constraint" type="xs:string"/>
   <xs:attribute name="editable" type="xs:boolean"/>
   <xs:attribute name="enabled" type="xs:boolean"/>
   <xs:attribute name="floatable" type="xs:boolean"/>
   <xs:attribute name="focusable" type="xs:boolean"/>
   <xs:attribute name="font" type="xs:string"/>
-  <xs:attribute name="height" type="xs:int"/>
 	<xs:attribute name="horizontalScrollBarPolicy" type="xs:int"/>
   <xs:attribute name="icon" type="xs:string"/>
   <xs:attribute name="id" type="xs:string"/>
@@ -21,13 +21,16 @@
 	<xs:attribute name="location" type="xs:string"/>
   <xs:attribute name="majorTickSpacing" type="xs:int"/>
   <xs:attribute name="maximum" type="xs:int"/>
+	<xs:attribute name="maximumSize" type="xs:string"/>
   <xs:attribute name="minimum" type="xs:int"/>
+	<xs:attribute name="minimumSize" type="xs:string"/>
   <xs:attribute name="minorTickSpacing" type="xs:int"/>
   <xs:attribute name="modal" type="xs:boolean"/>
   <xs:attribute name="name" type="xs:string"/>
   <xs:attribute name="orientation" type="xs:string"/>
   <xs:attribute name="paintLabels" type="xs:boolean"/>
   <xs:attribute name="paintTicks" type="xs:boolean"/>
+	<xs:attribute name="perferredSize" type="xs:string"/>
   <xs:attribute name="popupVisible" type="xs:boolean"/>
   <xs:attribute name="resizable" type="xs:boolean"/>
   <xs:attribute name="rootVisible" type="xs:boolean"/>
@@ -36,6 +39,7 @@
   <xs:attribute name="selected" type="xs:boolean"/>
   <xs:attribute name="selectedIndex" type="xs:int"/>
   <xs:attribute name="selectionRow" type="xs:int"/>
+	<xs:attribute name="size" type="xs:string"/>
   <xs:attribute name="stringPainted" type="xs:boolean"/>
   <xs:attribute name="text" type="xs:string"/>
   <xs:attribute name="title" type="xs:string"/>
@@ -44,7 +48,6 @@
 	<xs:attribute name="verticalScrollBarPolicy" type="xs:int"/>
   <xs:attribute name="visible" type="xs:boolean"/>
 	<xs:attribute name="wheelScrollingEnabled" type="xs:boolean"/>
-  <xs:attribute name="width" type="xs:int"/>
 
 
   <xs:element name="button">
@@ -53,18 +56,21 @@
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
       <xs:attribute ref="border"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="icon"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -83,18 +89,21 @@
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
       <xs:attribute ref="border"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
       <xs:attribute ref="selected"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -104,18 +113,21 @@
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
       <xs:attribute ref="border"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
       <xs:attribute ref="popupVisible"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -124,15 +136,17 @@
       <xs:attribute ref="background"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="modal"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
       <xs:attribute ref="resizable"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="title"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
   
@@ -161,15 +175,17 @@
       <xs:attribute ref="background"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="layout"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
       <xs:attribute ref="resizable"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="title"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -178,17 +194,20 @@
       <xs:attribute ref="alignmentX"/>
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -205,16 +224,18 @@
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="title"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -229,14 +250,16 @@
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="title"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -248,16 +271,18 @@
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="title"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -284,17 +309,20 @@
       <xs:attribute ref="alignmentX"/>
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="layout"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -303,21 +331,24 @@
       <xs:attribute ref="alignmentX"/>
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
       <xs:attribute ref="maximum"/>
+			<xs:attribute ref="maximumSize"/>
       <xs:attribute ref="minimum"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="orientation"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="stringPainted"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="value"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -327,18 +358,21 @@
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
       <xs:attribute ref="border"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="label"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
       <xs:attribute ref="selected"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -365,20 +399,23 @@
       <xs:attribute ref="alignmentX"/>
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
 			<xs:attribute ref="horizontalScrollBarPolicy"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="layout"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="toolTipText"/>
 			<xs:attribute ref="verticalScrollBarPolicy"/>
       <xs:attribute ref="visible"/>
 			<xs:attribute ref="wheelScrollingEnabled"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -387,25 +424,28 @@
       <xs:attribute ref="alignmentX"/>
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="inverted"/>
 			<xs:attribute ref="location"/>
       <xs:attribute ref="majorTickSpacing"/>
       <xs:attribute ref="maximum"/>
+			<xs:attribute ref="maximumSize"/>
       <xs:attribute ref="minimum"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="minorTickSpacing"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="orientation"/>
       <xs:attribute ref="paintLabels"/>
       <xs:attribute ref="paintTicks"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="value"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -417,14 +457,16 @@
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="value"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -467,35 +509,43 @@
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
       <xs:attribute ref="layout"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
   <xs:element name="table">
     <xs:complexType>
+			<xs:sequence>
+        <xs:element ref="th" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
       <xs:attribute ref="alignmentX"/>
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
       <xs:attribute ref="columns"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
       <xs:attribute ref="rows"/>
       <xs:attribute ref="rowHeight"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -505,19 +555,22 @@
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
       <xs:attribute ref="columns"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="editable"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
       <xs:attribute ref="rows"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -527,18 +580,21 @@
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
       <xs:attribute ref="columns"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="editable"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -547,20 +603,29 @@
       <xs:attribute ref="alignmentX"/>
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="editable"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="text"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
+
+	<xs:element name="th">
+		<xs:complexType>
+			<xs:attribute ref="name"/>
+		</xs:complexType>
+	</xs:element>
 
   <xs:element name="toolbar">
     <xs:complexType>
@@ -570,19 +635,22 @@
       <xs:attribute ref="alignmentX"/>
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="floatable"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
       <xs:attribute ref="orientation"/>
+			<xs:attribute ref="perferredSize"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="title"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 
@@ -591,20 +659,23 @@
       <xs:attribute ref="alignmentX"/>
       <xs:attribute ref="alignmentY"/>
       <xs:attribute ref="background"/>
+			<xs:attribute ref="constraint"/>
       <xs:attribute ref="editable"/>
       <xs:attribute ref="enabled"/>
       <xs:attribute ref="focusable"/>
       <xs:attribute ref="font"/>
-      <xs:attribute ref="height"/>
       <xs:attribute ref="id"/>
 			<xs:attribute ref="location"/>
+			<xs:attribute ref="maximumSize"/>
+			<xs:attribute ref="minimumSize"/>
       <xs:attribute ref="name"/>
+			<xs:attribute ref="perferredSize"/>
       <xs:attribute ref="rootVisible"/>
       <xs:attribute ref="rowHeight"/>
       <xs:attribute ref="selectionRow"/>
+			<xs:attribute ref="size"/>
       <xs:attribute ref="toolTipText"/>
       <xs:attribute ref="visible"/>
-      <xs:attribute ref="width"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>
