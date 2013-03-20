@@ -4,6 +4,7 @@ public class SwingTagLibrary extends TagLibrary{
 	
 	public SwingTagLibrary()
 	{
+		this.insertTag("border", "tags.Border");
 		this.insertTag("button", "javax.swing.JButton");
 		this.insertTag("buttongroup", "javax.swing.ButtonGroup");
 		this.insertTag("checkbox", "javax.swing.JCheckBox");

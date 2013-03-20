@@ -22,6 +22,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import tags.Border;
 import tags.Column;
 import tags.Tab;
 
@@ -104,6 +105,10 @@ public class Parser {
 			{
 				addMethod = parent.getClass().getMethod("setJMenuBar", child.getClass());
 			}
+			else if(child.getClass().getName().equals("tags.Border"))
+			{
+				addMethod = parent.getClass().getMethod("setBorder", javax.swing.border.Border.class);
+			}
 			else if(parent.getClass().getName().equals("javax.swing.JScrollPane"))
 			{
 				addMethod = parent.getClass().getMethod("setViewportView",java.awt.Component.class);
@@ -149,6 +154,10 @@ public class Parser {
 			else if(child.getClass().getName().equals("tags.Column"))
 			{
 				addMethod.invoke(parent, ((Column) child).getModel());
+			}
+			else if(child.getClass().getName().equals("tags.Border"))
+			{
+				addMethod.invoke(parent, ((Border) child).getBorder());
 			}
 			else
 			{
