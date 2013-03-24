@@ -10,16 +10,16 @@ public class test {
 	public static void main(String[] args)
 	{
 		Engine e = new Engine();
-		e.setLayout(test.class.getResourceAsStream("sample.xml"));
+		e.setLayout(test.class.getResourceAsStream("about.xml"));
 		e.render();
 //		JTable table = (JTable) e.findViewById("tb");
 //		DefaultTableModel tbmodel = (DefaultTableModel) table.getModel();
 //		tbmodel.addRow(new Object[]{"Column 1", "Column 2", "Column 3"});
-		JComboBox<String> cb = (JComboBox<String>) e.findViewById("type");
-		String [] items = {"Language", "Project"};
-		for(String s:items)
-		{
-			cb.addItem(s);
-		}
+//		JComboBox<String> cb = (JComboBox<String>) e.findViewById("type");
+//		String [] items = {"Language", "Project"};
+//		for(String s:items)
+//		{
+//			cb.addItem(s);
+//		}
 	}
 }
