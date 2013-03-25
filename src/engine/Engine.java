@@ -1,3 +1,4 @@
+package engine;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,6 +29,20 @@ public class Engine {
 		{
 			Method setMethod = this.layout.getClass().getMethod("setVisible", boolean.class);
 			setMethod.invoke(this.layout, true);
+		} catch (NoSuchMethodException | IllegalAccessException 
+				| IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void render(int operation)
+	{
+		try 
+		{
+			Method setMethod = this.layout.getClass().getMethod("setVisible", boolean.class);
+			setMethod.invoke(this.layout, true);
+			setMethod = this.layout.getClass().getMethod("setDefaultCloseOperation", int.class);
+			setMethod.invoke(this.layout, operation);
 		} catch (NoSuchMethodException | IllegalAccessException 
 				| IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();

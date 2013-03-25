@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<frame title="Code Manager" visible="true" size="1280, 720" location="200, 200">
+<frame title="Code Manager" visible="true" size="1280, 720" location="200, 200" id="main">
 	<menubar>
-		<menu text="File"/>
-		<menu text="Search">
+		<menu text="File">
+			<menu text="add">
+				<menuitem id="addCode" text="Add code file..."/>
+				<menuitem id="addFolder" text="Add code folder..."/>
+			</menu>
+		</menu>
+		<menu text="Edit">
 			<menuitem text="Search"/>
 		</menu>
 		<menu text="Help">
-			<menuitem text="About"/>
+			<menuitem id="about" text="About"/>
 		</menu>
 	</menubar>
 	<panel layout="BorderLayout">
@@ -22,6 +27,7 @@
 				<table id="tb">
 					<th name="Name" />
 					<th name="Path" />
+					<th name="Size" />
 					<th name="Date Modified" />
 				</table>
 			</scrollpane>
