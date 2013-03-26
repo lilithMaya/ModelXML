@@ -28,13 +28,30 @@ public class Launcher extends Engine {
 		addCode.addActionListener(new AddFile());
 		JMenuItem addFolder = (JMenuItem) this.findViewById("addFolder");
 		addFolder.addActionListener(new AddFolder());
-		JMenuItem about = (JMenuItem) this.findViewById("about");
-		about.addActionListener(new ActionListener() {
-
+		JMenuItem search = (JMenuItem) this.findViewById("search");
+		search.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				About about = new About();
-				about.show();
+				Search searchDialog = new Search();
+				searchDialog.show();
+			}			
+		});
+		JMenuItem about = (JMenuItem) this.findViewById("about");
+		about.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				About aboutDialog = new About();
+				aboutDialog.show();
+			}			
+		});
+		JMenuItem exit = (JMenuItem) this.findViewById("exit");
+		exit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Launcher.this.killLayout();
 			}
 			
 		});
@@ -42,7 +59,7 @@ public class Launcher extends Engine {
 	}
 	
 	class AddFile implements ActionListener {
-
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fc = new JFileChooser();
@@ -52,7 +69,7 @@ public class Launcher extends Engine {
 	}
 	
 	class AddFolder implements ActionListener {
-
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fc = new JFileChooser();

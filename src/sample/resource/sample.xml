@@ -6,9 +6,15 @@
 				<menuitem id="addCode" text="Add code file..."/>
 				<menuitem id="addFolder" text="Add code folder..."/>
 			</menu>
+			<separator/>
+			<menuitem id="exit" text="exit"/>
 		</menu>
 		<menu text="Edit">
-			<menuitem text="Search"/>
+			<menuitem text="Search" id="search"/>
+			<separator/>
+			<menuitem text="Copy" enabled="false"/>
+			<menuitem text="Cut" enabled="false"/>
+			<menuitem text="Paste" enabled="false"/>
 		</menu>
 		<menu text="Help">
 			<menuitem id="about" text="About"/>

@@ -24,6 +24,7 @@ import org.xml.sax.SAXException;
 
 import tags.Border;
 import tags.Column;
+import tags.SpaceArea;
 import tags.Tab;
 
 public class Parser {
@@ -109,6 +110,10 @@ public class Parser {
 			{
 				addMethod = parent.getClass().getMethod("setBorder", javax.swing.border.Border.class);
 			}
+			else if(child.getClass().getName().equals("javax.swing.JSeparator"))
+			{
+				addMethod = parent.getClass().getMethod("addSeparator", new Class<?>[] {});
+			}
 			else if(parent.getClass().getName().equals("javax.swing.JScrollPane"))
 			{
 				addMethod = parent.getClass().getMethod("setViewportView",java.awt.Component.class);
@@ -158,6 +163,14 @@ public class Parser {
 			else if(child.getClass().getName().equals("tags.Border"))
 			{
 				addMethod.invoke(parent, ((Border) child).getBorder());
+			}
+			else if(child.getClass().getName().equals("tags.SpaceArea"))
+			{
+				addMethod.invoke(parent, ((SpaceArea) child).getSpaceArea());
+			}
+			else if(child.getClass().getName().equals("javax.swing.JSeparator"))
+			{
+				addMethod.invoke(parent, new Object[] {});
 			}
 			else
 			{

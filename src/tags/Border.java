@@ -184,7 +184,7 @@ public class Border {
 			Field[] fields = Class.forName(className).getFields();
 			for(int i = 0; i < fields.length; i++)
 			{
-				if(fields[i].getName().equals(field))
+				if(fields[i].getName().equals(field.toUpperCase()))
 					return (int) fields[i].get(Class.forName(className));
 			}
 		} catch (SecurityException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException e) {

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog title="Search" visible="true" size="350, 120" location="640, 360">
+	<panel layout="vbox">
+		<spacearea size="0, 10"/>
+		<panel layout="hbox">
+			<label text="Search What: "/>
+			<textfield id="entry" maximumSize="230, 25"/>
+		</panel>
+		<spacearea size="0, 20"/>
+		<panel layout="hbox">
+			<button text="Search" id="search"/>
+			<spacearea size="20, 0"/>
+			<button text="Cancel" id="cancel"/>
+		</panel>
+	</panel>
+</dialog>

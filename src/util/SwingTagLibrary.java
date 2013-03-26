@@ -20,7 +20,9 @@ public class SwingTagLibrary extends TagLibrary{
 		this.insertTag("progressbar", "javax.swing.JProgressBar");
 		this.insertTag("radiobutton", "javax.swing.JRadioButton");
 		this.insertTag("scrollpane", "javax.swing.JScrollPane");
+		this.insertTag("separator", "javax.swing.JSeparator");
 		this.insertTag("slider", "javax.swing.JSlider");
+		this.insertTag("spacearea", "tags.SpaceArea");
 		this.insertTag("spinner", "javax.swing.JSpinner");
 		this.insertTag("tab", "tags.Tab");
 		this.insertTag("tabbedpane", "javax.swing.JTabbedPane");
