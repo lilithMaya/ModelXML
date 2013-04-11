@@ -1,4 +1,4 @@
-package sample;
+package sample.view;
 
 import javax.swing.JDialog;
 

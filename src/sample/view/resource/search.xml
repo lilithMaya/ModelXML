@@ -3,7 +3,7 @@
 	<panel layout="vbox">
 		<spacearea size="0, 10"/>
 		<panel layout="hbox">
-			<label text="Search What: "/>
+			<label text="Search File: "/>
 			<textfield id="entry" maximumSize="230, 25"/>
 		</panel>
 		<spacearea size="0, 20"/>

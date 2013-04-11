@@ -4,7 +4,7 @@
 		<menu text="File">
 			<menu text="add">
 				<menuitem id="addCode" text="Add code file..."/>
-				<menuitem id="addFolder" text="Add code folder..."/>
+				<menuitem id="addFolder" text="Add project folder..."/>
 			</menu>
 			<separator/>
 			<menuitem id="exit" text="exit"/>
