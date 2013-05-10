@@ -4,7 +4,7 @@ import java.awt.Dimension;
 
 import javax.swing.Box;
 
-public class SpaceArea {
+public class SpaceArea implements AbstractTag {
 	
 	Dimension size;
 	
@@ -16,10 +16,11 @@ public class SpaceArea {
 		this.size = size;
 	}
 
-	public Object getSpaceArea()
+	@Override
+	public Object[] getComponent()
 	{
 		Object obj = Box.createRigidArea(size);
-		return obj;
+		return new Object[] {obj};
 	}
 
 }

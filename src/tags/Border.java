@@ -8,7 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
-public class Border {
+public class Border implements AbstractTag {
 	private int top = 1;
 	private int left = 1;
 	private int right = 1;
@@ -130,7 +130,8 @@ public class Border {
 		this.titleColor = titleColor;
 	}
 	
-	public javax.swing.border.Border getBorder() {
+	@Override
+	public Object[] getComponent() {
 		javax.swing.border.Border border = null;
 		switch(this.borderName)
 		{
@@ -163,18 +164,18 @@ public class Border {
 		if((border != null) && (this.title != null))
 		{
 			if(this.titleFont == null)
-				return BorderFactory.createTitledBorder(border, this.title, 
+				return new Object[] {BorderFactory.createTitledBorder(border, this.title, 
 						this.convertType("TitledBorder",this.titleJustification), 
 						this.convertType("TitledBorder",this.titlePosition), 
 						UIManager.getDefaults().getFont("TitledBorder.font"), 
-						this.convertColor("TitledBorder", this.titleColor));
+						this.convertColor("TitledBorder", this.titleColor))};
 			else
-				return BorderFactory.createTitledBorder(border, this.title, 
+				return new Object[] {BorderFactory.createTitledBorder(border, this.title, 
 						this.convertType("TitledBorder",this.titleJustification), 
 						this.convertType("TitledBorder",this.titlePosition), Font.decode(this.titleFont), 
-						this.convertColor("TitledBorder", this.titleColor));
+						this.convertColor("TitledBorder", this.titleColor))};
 		}
-		return border;
+		return new Object[] {border};
 	}
 	
 	private int convertType(String tagborderName, String field)

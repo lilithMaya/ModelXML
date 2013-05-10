@@ -4,7 +4,6 @@ public class SwingTagLibrary extends TagLibrary{
 	
 	public SwingTagLibrary()
 	{
-		this.insertTag("border", "tags.Border");
 		this.insertTag("button", "javax.swing.JButton");
 		this.insertTag("buttongroup", "javax.swing.ButtonGroup");
 		this.insertTag("checkbox", "javax.swing.JCheckBox");
@@ -23,17 +22,19 @@ public class SwingTagLibrary extends TagLibrary{
 		this.insertTag("scrollpane", "javax.swing.JScrollPane");
 		this.insertTag("separator", "javax.swing.JSeparator");
 		this.insertTag("slider", "javax.swing.JSlider");
-		this.insertTag("spacearea", "tags.SpaceArea");
 		this.insertTag("spinner", "javax.swing.JSpinner");
-		this.insertTag("tab", "tags.Tab");
 		this.insertTag("tabbedpane", "javax.swing.JTabbedPane");
 		this.insertTag("table", "javax.swing.JTable");
 		this.insertTag("textarea", "javax.swing.JTextArea");
 		this.insertTag("textfield", "javax.swing.JTextField");
 		this.insertTag("textpane", "javax.swing.JTextPane");
-		this.insertTag("th", "tags.Column");
 		this.insertTag("toolbar", "javax.swing.JToolBar");
 		this.insertTag("tree", "javax.swing.JTree");
+		
+//		this.insertTag("border", "tags.Border");
+//		this.insertTag("spacearea", "tags.SpaceArea");
+//		this.insertTag("tab", "tags.Tab");
+//		this.insertTag("th", "tags.Column");
 	}
 
 }

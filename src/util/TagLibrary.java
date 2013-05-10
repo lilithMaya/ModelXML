@@ -11,6 +11,14 @@ public abstract class TagLibrary {
 		this.map.put(tag, library);
 	}
 	
+	public boolean contains(String value) {
+		return this.map.containsValue(value);
+	}
+	
+	public boolean containsTag(String tag) {
+		return this.map.containsKey(tag);
+	}
+	
 	public Class<?> getLibrary(String tag) {
 		if(!this.map.containsKey(tag))
 			return null;

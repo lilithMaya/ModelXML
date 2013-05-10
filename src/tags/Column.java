@@ -2,7 +2,7 @@ package tags;
 
 import javax.swing.table.DefaultTableModel;
 
-public class Column {
+public class Column implements AbstractTag {
 	
 	private static DefaultTableModel model = new DefaultTableModel() {
 	    /**
@@ -22,8 +22,9 @@ public class Column {
 		index++;
 	}
 	
-	public DefaultTableModel getModel() {
-		return model;
+	@Override
+	public Object[] getComponent() {
+		return new Object[] {model};
 	}
 		
 	public void setName(String name) {

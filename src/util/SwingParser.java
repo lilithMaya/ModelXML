@@ -22,10 +22,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import tags.Border;
-import tags.Column;
-import tags.SpaceArea;
-import tags.Tab;
+import tags.AbstractTag;
 
 public class SwingParser implements Parser{
 	
@@ -34,6 +31,8 @@ public class SwingParser implements Parser{
 	private Map<String, Object> objects = new HashMap<String, Object>();
 	private List<Object> buttongroup = new ArrayList<Object>();
 	private Stack<Object> constraints = new Stack<Object>();
+	private ExtendTagLibrary extendTagLibrary = new ExtendTagLibrary();
+	private SwingTagLibrary libraries = new SwingTagLibrary();
 			
 	private Method findSetMethod(Object target, String field)
 	{
@@ -151,22 +150,9 @@ public class SwingParser implements Parser{
 						addMethod.invoke(parent, buttongroup.remove(0));
 				}
 			}
-			else if(child.getClass().getName().equals("tags.Tab"))
+			else if(this.extendTagLibrary.contains(child.getClass().getName()))
 			{
-				Tab tab = (Tab) child;
-				addMethod.invoke(parent, tab.getTitle(), tab.getIcon(), tab.getComponent(), tab.getToolTipText());
-			}
-			else if(child.getClass().getName().equals("tags.Column"))
-			{
-				addMethod.invoke(parent, ((Column) child).getModel());
-			}
-			else if(child.getClass().getName().equals("tags.Border"))
-			{
-				addMethod.invoke(parent, ((Border) child).getBorder());
-			}
-			else if(child.getClass().getName().equals("tags.SpaceArea"))
-			{
-				addMethod.invoke(parent, ((SpaceArea) child).getSpaceArea());
+				addMethod.invoke(parent, ((AbstractTag) child).getComponent());
 			}
 			else if(child.getClass().getName().equals("javax.swing.JSeparator"))
 			{
@@ -210,7 +196,6 @@ public class SwingParser implements Parser{
 		try
 		{
 			this.read(inputStream);
-			SwingTagLibrary libraries = new SwingTagLibrary();
 			Element currentNode = this.doc.getDocumentElement();		
 			int index = 0;
 			String id = null;
@@ -222,7 +207,11 @@ public class SwingParser implements Parser{
 				if(index == 0)
 				{
 					Object constraint = null;
-					targetObject = libraries.getLibrary(currentNode.getNodeName()).newInstance();
+					String tag = currentNode.getNodeName();
+					if(libraries.containsTag(tag))
+						targetObject = libraries.getLibrary(tag).newInstance();
+					else
+						targetObject = extendTagLibrary.getLibrary(tag).newInstance();
 					id = null;
 					NamedNodeMap attributes = currentNode.getAttributes();
 					for(int i = 0; i < attributes.getLength(); i++)
@@ -249,7 +238,8 @@ public class SwingParser implements Parser{
 				NodeList children = currentNode.getChildNodes();
 				for(int i = index; i < children.getLength(); i++)
 				{
-					if(libraries.getLibrary(children.item(i).getNodeName()) != null)
+					if(libraries.containsTag(children.item(i).getNodeName()) 
+							|| extendTagLibrary.containsTag(children.item(i).getNodeName()))
 					{
 						this.ancestors.push(new ObjectState(currentNode, i + 1, targetObject, id));
 						suspend = true;

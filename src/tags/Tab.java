@@ -3,14 +3,15 @@ package tags;
 import java.awt.Component;
 import javax.swing.ImageIcon;
 
-public class Tab {
+public class Tab implements AbstractTag {
 	private String title;
 	private ImageIcon icon;
 	private Component component;
 	private String toolTipText;
 	
-	public Component getComponent() {
-		return component;
+	@Override
+	public Object[] getComponent() {
+		return new Object[] {title, icon, component, toolTipText};
 	}
 	public String getTitle() {
 		return title;
