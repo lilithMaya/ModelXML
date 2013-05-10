@@ -17,6 +17,7 @@ public class SwingTagLibrary extends TagLibrary{
 		this.insertTag("menubar", "javax.swing.JMenuBar");
 		this.insertTag("menuitem", "javax.swing.JMenuItem");
 		this.insertTag("panel", "javax.swing.JPanel");
+		this.insertTag("popupmenu", "javax.swing.JPopupMenu");
 		this.insertTag("progressbar", "javax.swing.JProgressBar");
 		this.insertTag("radiobutton", "javax.swing.JRadioButton");
 		this.insertTag("scrollpane", "javax.swing.JScrollPane");

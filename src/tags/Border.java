@@ -19,7 +19,7 @@ public class Border {
 	private String shadowColor = "#shadow";
 	private boolean rounded = false;
 	private String title;
-	private String name = "EmptyBorder";
+	private String borderName = "EmptyBorder";
 	private String icon;
 	private String type;
 	private String titleJustification = "DEFAULT_JUSTIFICATION";
@@ -75,11 +75,11 @@ public class Border {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getName() {
-		return name;
+	public String getBorderName() {
+		return borderName;
 	}
-	public void setName(String name) {
-		this.name = name.substring(0 ,1).toUpperCase() + name.substring(1);
+	public void setBorderName(String borderName) {
+		this.borderName = borderName.substring(0 ,1).toUpperCase() + borderName.substring(1);
 	}
 	public String getIcon() {
 		return icon;
@@ -132,7 +132,7 @@ public class Border {
 	
 	public javax.swing.border.Border getBorder() {
 		javax.swing.border.Border border = null;
-		switch(this.name)
+		switch(this.borderName)
 		{
 			case "LineBorder":
 				border = BorderFactory.createLineBorder(new Color(Integer.parseInt(this.color.toString(),16)), 
@@ -147,14 +147,14 @@ public class Border {
 							new ImageIcon(this.icon));
 				break;
 			case "EtchedBorder":
-				border = BorderFactory.createEtchedBorder(this.convertType(this.name, this.type), 
-						this.convertColor(this.name, this.highlightColor), 
-						this.convertColor(this.name, this.shadowColor));
+				border = BorderFactory.createEtchedBorder(this.convertType(this.borderName, this.type), 
+						this.convertColor(this.borderName, this.highlightColor), 
+						this.convertColor(this.borderName, this.shadowColor));
 				break;
 			case "BevelBorder":
-				border = BorderFactory.createBevelBorder(this.convertType(this.name, this.type), 
-						this.convertColor(this.name, this.highlightColor), 
-						this.convertColor(this.name, this.shadowColor));
+				border = BorderFactory.createBevelBorder(this.convertType(this.borderName, this.type), 
+						this.convertColor(this.borderName, this.highlightColor), 
+						this.convertColor(this.borderName, this.shadowColor));
 				break;
 			default:
 				border = BorderFactory.createEmptyBorder(this.top, this.left, this.bottom, this.right);
@@ -177,15 +177,15 @@ public class Border {
 		return border;
 	}
 	
-	private int convertType(String tagName, String field)
+	private int convertType(String tagborderName, String field)
 	{
-		String className = "javax.swing.border." + tagName;
+		String classborderName = "javax.swing.border." + tagborderName;
 		try {
-			Field[] fields = Class.forName(className).getFields();
+			Field[] fields = Class.forName(classborderName).getFields();
 			for(int i = 0; i < fields.length; i++)
 			{
 				if(fields[i].getName().equals(field.toUpperCase()))
-					return (int) fields[i].get(Class.forName(className));
+					return (int) fields[i].get(Class.forName(classborderName));
 			}
 		} catch (SecurityException | ClassNotFoundException | IllegalArgumentException | IllegalAccessException e) {
 			// TODO Auto-generated catch block
@@ -195,10 +195,10 @@ public class Border {
 		return 0;
 	}
 	
-	private Color convertColor(String tagName, String field)
+	private Color convertColor(String tagborderName, String field)
 	{
 		if(field.startsWith("#"))
-			return UIManager.getColor(tagName + "." + field.substring(1));
+			return UIManager.getColor(tagborderName + "." + field.substring(1));
 		else
 			return new Color(Integer.parseInt(field,16));
 	}

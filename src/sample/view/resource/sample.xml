@@ -29,7 +29,7 @@
 		</panel>
 		<panel preferredSize="700, 600" constraint="BorderLayout.CENTER" layout="vbox">			
 			<scrollpane>
-				<border name="EtchedBorder" type="LOWERED" title="Files"/>
+				<border borderName="EtchedBorder" type="LOWERED" title="Files"/>
 				<table id="tb">
 					<th name="Name" />
 					<th name="Path" />

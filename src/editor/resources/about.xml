@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog title="About" visible="true" size="300, 150" location="640, 360">
+	<panel layout="vbox">
+		<textpane contentType="text/html" text="ViewXML Editor V1.0 &lt;br&gt; Haoqi Bai 2013 &lt;br&gt; Based on ViewXML" editable="false"/>
+		<spacearea size="0, 10"/>
+		<button text="OK" id="ok"/>
+		<spacearea size="0, 10"/>
+	</panel>
+</dialog>

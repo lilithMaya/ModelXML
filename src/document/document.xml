@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame title="demo" visible="true" size="300,300">
+  <panel>			
+    <border borderName="EtchedBorder" type="LOWERED" title="This is a border"/>
+  </panel>
+</frame>

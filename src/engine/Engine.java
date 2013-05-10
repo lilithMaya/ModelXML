@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import util.Parser;
+import util.SwingParser;
 
 public class Engine {
 	
@@ -15,7 +16,7 @@ public class Engine {
 	
 	public Engine()
 	{
-		parser = new Parser();
+		parser = new SwingParser();
 	}
 	
 	public void setLayout(InputStream inputStream) {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame title="ViewXML Editor" visible="true" size="1280, 720" location="200, 200" id="main">
+	<menubar>
+		<menu text="File">
+			<menuitem id="new" text="new"/>
+			<menuitem id="open" text="open..."/>
+			<menuitem id="save" text="save" enabled="false"/>
+			<menuitem id="saveAs" text="save as..." enabled="false"/>
+			<separator/>
+			<menuitem id="exit" text="exit"/>
+		</menu>
+		<menu text="Edit">
+			<menuitem id="undo" text="undo" enabled="false"/>
+  			<menuitem id="redo" text="redo" enabled="false"/>
+  			<separator/>
+			<menuitem id="cut" text="cut"/>
+			<menuitem id="copy" text="copy"/>
+			<menuitem id="paste" text="paste"/>
+		</menu>
+		<menu text="Run">
+			<menuitem id="run" text="run" enabled="false"/>
+		</menu>
+		<menu text="Help">
+			<menuitem id="about" text="About"/>
+		</menu>
+	</menubar>
+	<panel layout="vbox">
+		<scrollpane preferredSize="1280, 450">
+			<textpane id="text" font="Arial-16"/>
+		</scrollpane>
+		<scrollpane preferredSize="1280, 220">
+			<textarea id="console" editable="false" focusable="true">
+				<border borderName="EtchedBorder" type="LOWERED" title="Console"/>
+			</textarea>
+		</scrollpane>
+		<label alignmentX="1.0" id="line" text="Line: 1"/>
+	</panel>
+</frame>
